@@ -48,6 +48,9 @@ CREATE TABLE `producto` (
   `idProvFK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `producto` (`idProd`, `nombreProd`, `marcaProd`, cantidadProd`, `precioProd`, `idProvFK`) VALUES
+(45, 'Carne', 5, 2000, 'Abarrotes'),
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +65,10 @@ CREATE TABLE `proveedor` (
   `emailProv` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `proveedor` (`idProv`, `nombreProv`, `dirProv`, `telProv`, `emailProv`) VALUES
+(001, 'Colanta', 'Bogotá', 3505050, cliente@colanta.com),
+(002, 'Alpina', 'Chía', 3102030, cliente@alpina.com),
+(003, 'Ramo', 'Madrid', 2104010, cliente@ramo.com.co);
 -- --------------------------------------------------------
 
 --
