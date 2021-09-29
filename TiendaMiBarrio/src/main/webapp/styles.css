@@ -16,7 +16,9 @@ and open the template in the editor.
 body {
   font-family: arial;
   background-image: url('assets/imagen/bg.png');
-}
+  display: flex;
+  align-items: center;
+  }
 
 .form-login {
   width: 400px;
@@ -81,11 +83,6 @@ body {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
-body{
-	font-family: arial;
-        background-image: url('assets/imagen/bg.png');
-    }
 
 header{
 	width: 100%;

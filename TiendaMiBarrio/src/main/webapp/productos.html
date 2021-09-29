@@ -4,10 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Proveedores</title>
+        <title>Productos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
@@ -18,37 +17,40 @@ and open the template in the editor.
         
         <header>
             <div class="container bg-white text-center bg-opacity-25 margen" >
-                <h1>Gestión de Proveedores</h1>
+                <h1>Gestión de Productos</h1>
             </div>
         </header>
 
         <section class="container">
-            <form method="POST" action="controlProveedor">
-                <h3 style="text-align: center"><br>Información de Proveedores</h3>
+            <form method="POST" action="controlProducto">
+                <h3 style="text-align: center"><br>Información de Productos</h3>
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="ejemplo" name="codigoProv" required="">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="ejemplo" name="codigoProd" required="">
                             <label for="floatingInput">Codigo: </label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="ejemplo" name="nombreProv" required="">
-                            <label for="floatingInput">Nombre: </label>
+                            <input type="text" class="form-control" id="floatingInput" placeholder="ejemplo" name="nombreProd" required="">
+                            <label for="floatingInput">Descripción: </label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="ejemplo" name="direccionProv" required="">
-                            <label for="floatingInput">Dirección: </label>
+                            <input type="text" class="form-control" id="floatingInput" placeholder="ejemplo" name="presentacionProd" required="">
+                            <label for="floatingInput">Presentación: </label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="ejemplo" name="telefonoProv" required="">
-                            <label for="floatingInput">Teléfono: </label>
+                            <input type="number" class="form-control" id="floatingInput" placeholder="ejemplo" name="CantidadProd" required="">
+                            <label for="floatingInput">Cantidad: </label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="ejemplo" name="emailProv" required="">
-                            <label for="floatingInput">Email: </label>
+                            <input type="double" class="form-control" id="floatingInput" placeholder="ejemplo" name="precioProd" required="">
+                            <label for="floatingInput">Precio: </label>
                         </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="ejemplo" name="idProveedor" required="">
+                            <label for="floatingInput">Proveedor: </label>
                     </div>
                 </div>
                 <div class="row">
@@ -64,20 +66,21 @@ and open the template in the editor.
                 <thead>
                     <tr>
                         <th scope="col">Código</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Dirección</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Acción</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Presentación</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Proveedor</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Nombre</td>
+                        <td>Descripción</td>
+                        <td>libra</td>
                         <td>10</td>
-                        <td>10</td>
-                        <td>@mdo</td>
+                        <td>2500</td>
+                        <td>Colanta</td>
 
                         <td>
                             <button class="btn btn-primary">Actualizar</button>
@@ -86,10 +89,11 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <th scope="row">2</th>
-                        <td>Nombre</td>
+                        <td>Descripción</td>
+                        <td>libra</td>
                         <td>10</td>
-                        <td>10</td>
-                        <td>@mdo</td>
+                        <td>2500</td>
+                        <td>Colanta</td>
 
                         <td>
                             <button class="btn btn-primary">Actualizar</button>
@@ -98,10 +102,11 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td>Nombre</td>
+                        <td>Descripción</td>
+                        <td>libra</td>
                         <td>10</td>
-                        <td>10</td>
-                        <td>@mdo</td>
+                        <td>2500</td>
+                        <td>Colanta</td>
 
                         <td>
                             <button class="btn btn-primary">Actualizar</button>
