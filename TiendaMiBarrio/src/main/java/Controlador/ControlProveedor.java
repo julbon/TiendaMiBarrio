@@ -5,8 +5,12 @@
  */
 package Controlador;
 
+import Modelo.Producto;
+import Modelo.Proveedor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ControlProveedor", urlPatterns = {"/ControlProveedor"})
 public class ControlProveedor extends HttpServlet {
-
+    Proveedor objProv = new Proveedor();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,19 +35,63 @@ public class ControlProveedor extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControlProveedor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControlProveedor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String accion = request.getParameter("btnAccion"); 
+            
+            if(accion.equals("Insertar")){
+                
+                int idProv = Integer.parseInt(request.getParameter("idProv")); 
+                String nombreProv = request.getParameter("nombreProv");
+                String dirProv = request.getParameter("dirProv");
+                int telProv = Integer.parseInt(request.getParameter("telProv"));
+                String emailProv = request.getParameter("emailProv"); 
+                
+                objProv.setIdProv(idProv);
+                objProv.setNombreProv(nombreProv);
+                objProv.setDirProv(dirProv);
+                objProv.setTelProv(telProv);
+                objProv.setEmailProv(emailProv);
+                               
+                objProv.crearProveedor();
+                
+                String mensaje = "<html> <body>"+
+                                 " <script type='text/javaScript'> "+
+                                 "      alert('Proveedor agregado correctamente!'); "+
+                                 "      window.location.href='index.jsp'"+
+                                 "</script> </body> </html>"; 
+                
+                out.println(mensaje);
+            }
         }
+        catch(Exception error){
+            System.out.println("Error en el Controlador Proveedor: "+ error);
+        }
+    }
+        
+     public ArrayList listar(){
+        try {
+            ResultSet consulta = objProv.listarProveedor(); 
+            ArrayList<Proveedor> listaProveedor = new ArrayList<>(); 
+            
+            while(consulta.next()){
+                objProv = new Proveedor(); 
+                objProv.setIdProv(consulta.getInt(1));
+                objProv.setNombreProv(consulta.getString(2));
+                objProv.setDirProv(consulta.getString(3));
+                objProv.setTelProv(consulta.getInt(4));
+                objProv.setEmailProv(consulta.getString(5));
+                listaProveedor.add(objProv); 
+            }
+            
+            return listaProveedor; 
+            
+        } catch (Exception error) {
+            System.out.println("Error Controlador Proveedor:" + error);
+        }
+ 
+        return null;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,8 +103,8 @@ public class ControlProveedor extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -70,7 +118,7 @@ public class ControlProveedor extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -81,8 +129,7 @@ public class ControlProveedor extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

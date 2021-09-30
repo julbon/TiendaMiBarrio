@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<%-- 
+    Document   : proveedores
+    Created on : 30/09/2021, 02:50:34 PM
+    Author     : julian.bonilla
+--%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Controlador.ControlProveedor"%>
+<%@page import="Modelo.Proveedor"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,20 +15,20 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
-        
+
 
     </head>
     <body>
-        
+
         <header>
-            <div class="container bg-white text-center bg-opacity-25 margen" >
+            <div class="container bg-success text-center bg-opacity-25 margen" >
                 <h1>Gestión de Proveedores</h1>
             </div>
         </header>
 
         <section class="container">
             <form method="POST" action="ControlProveedor">
-                <h3 style="text-align: center"><br>Información de Proveedores</h3>
+                <h3 style="text-align: center">Información de General</h3>
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
@@ -72,42 +76,26 @@ and open the template in the editor.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Nombre</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>@mdo</td>
+                    <%
+                        ArrayList<Proveedor> listaProveedor = new ArrayList<>();
+                        ControlProveedor ctrProveedor = new ControlProveedor();
+                        listaProveedor = ctrProveedor.listar();
 
+                        for (int i = 0; i < listaProveedor.size(); i++) {
+
+                    %>                                 
+                    <tr>
+                        <th scope="row"><%=listaProveedor.get(i).getIdProv()%></th>
+                        <td><%=listaProveedor.get(i).getNombreProv()%></td>
+                        <td><%=listaProveedor.get(i).getDirProv()%></td>
+                        <td><%=listaProveedor.get(i).getTelProv()%></td>
+                        <td><%=listaProveedor.get(i).getEmailProv()%></td>
                         <td>
-                            <button class="btn btn-primary">Actualizar</button>
-                            <button class="btn btn-danger"> Eliminar </button>
+                            <a href="actualizar.jsp?idProv=<%=listaProveedor.get(i).getIdProv()%>"><button class="btn btn-outline-success">Actualizar</button></a>
+                            <a href="ControlProveedor?idProd=<%=listaProveedor.get(i).getIdProv()%>"><button class="btn btn-danger"> Eliminar </button></a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Nombre</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>@mdo</td>
-
-                        <td>
-                            <button class="btn btn-primary">Actualizar</button>
-                            <button class="btn btn-danger"> Eliminar </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Nombre</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>@mdo</td>
-
-                        <td>
-                            <button class="btn btn-primary">Actualizar</button>
-                            <button class="btn btn-danger"> Eliminar </button>
-                        </td>
-                    </tr>
+                    <%}%>
                 </tbody>
             </table>
         </section>

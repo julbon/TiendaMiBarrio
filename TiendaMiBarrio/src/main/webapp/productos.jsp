@@ -1,10 +1,15 @@
+<%-- 
+    Document   : productos
+    Created on : 30/09/2021, 02:50:48 PM
+    Author     : julian.bonilla
+--%>
 
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="Controlador.ControlProducto"%>
+<%@page import="Modelo.Producto"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Productos</title>
@@ -15,16 +20,15 @@ and open the template in the editor.
 
     </head>
     <body>
-
         <header>
-            <div class="container bg-white text-center bg-opacity-25 margen" >
+            <div class="container bg-success text-center bg-opacity-25 margen" >
                 <h1>Gestión de Productos</h1>
             </div>
         </header>
 
         <section class="container">
             <form method="POST" action="ControlProducto">
-                <h3 style="text-align: center"><br>Información de Productos</h3>
+                <h3 style="text-align: center">Información General</h3>
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
@@ -55,14 +59,14 @@ and open the template in the editor.
                         </div>
                         <div class="row">
                             <center>
-                                <button class="btn btn-primary" name="btnAccion" value="Insertar">Guardar</button>
+                                <button class="btn btn-primary" name="btnAccion" value="Insertar">Guardar</button> 
                             </center>
                         </div>
                         </form>
                         </section>
-                        <br>
+                       
                         <section class="container">
-                            
+                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">Código</th>
@@ -74,7 +78,7 @@ and open the template in the editor.
                                     </tr>
                                 </thead>
                                 
-                                    
+                                    <tbody>
                                     <% 
                                     ArrayList<Producto> listaProducto = new ArrayList<>(); 
                                     ControlProducto ctrProducto = new ControlProducto(); 
@@ -96,8 +100,8 @@ and open the template in the editor.
                                             </td>
                                         </tr>
                                         <%}%>
-                                        
-                                        
+                                        </tbody>
+                                        </table>
                                         </section>
 
                                         <footer>
@@ -109,3 +113,4 @@ and open the template in the editor.
                                         <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
                                         </body>
                                         </html>
+

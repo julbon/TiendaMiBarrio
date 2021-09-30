@@ -140,3 +140,9 @@ header{
 	opacity: 1;
 }
 
+.fondo {
+  background-image: url('assets/imagen/bg.png');
+  display: flex;
+  align-items: center;
+   }
+
