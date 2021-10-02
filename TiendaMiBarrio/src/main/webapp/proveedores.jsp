@@ -19,6 +19,19 @@
 
     </head>
     <body>
+        
+        <script type="text/javascript">
+            function confirmar(){
+                var respuesta = confirm("¿Desea eliminar el proveedor?");
+                if (respuesta === true){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            
+            
+        </script>
 
         <header>
             <div class="container bg-success text-center bg-opacity-25 margen" >
@@ -92,7 +105,7 @@
                         <td><%=listaProveedor.get(i).getEmailProv()%></td>
                         <td>
                             <a href="actualizar.jsp?idProv=<%=listaProveedor.get(i).getIdProv()%>"><button class="btn btn-outline-success">Actualizar</button></a>
-                            <a href="ControlProveedor?idProd=<%=listaProveedor.get(i).getIdProv()%>"><button class="btn btn-danger"> Eliminar </button></a>
+                            <a href="ControlProveedor?idProv=<%=listaProveedor.get(i).getIdProv()%>&btnAccion=Eliminar"><button class="btn btn-danger" onclick="return confirmar();"> Eliminar </button></a>
                         </td>
                     </tr>
                     <%}%>

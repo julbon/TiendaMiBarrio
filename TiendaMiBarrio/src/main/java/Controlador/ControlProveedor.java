@@ -89,6 +89,25 @@ public class ControlProveedor extends HttpServlet {
                 out.println(mensaje);
             
             }
+            
+            else if(accion.equals("Eliminar")){
+             
+                int idProv = Integer.parseInt(request.getParameter("idProv")); 
+                               
+                objProv.setIdProv(idProv);
+                               
+                objProv.eliminarProducto();
+                        
+                        
+                String mensaje = "<html> <body>"+
+                                 " <script type='text/javaScript'> "+
+                                 "      alert('Proveedor eliminado correctamente!'); "+
+                                 "      window.location.href='index.jsp'"+
+                                 "</script> </body> </html>"; 
+                
+                out.println(mensaje);
+            
+            }
                 
             
         }

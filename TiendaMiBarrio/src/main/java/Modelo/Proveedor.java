@@ -164,6 +164,26 @@ public class Proveedor {
     }
     
     public void eliminarProducto(){
+        ConexionBD objConector = new ConexionBD();
+        objConector.conectar();
+
+        try {
+
+            String sql = "DELETE FROM proveedor "+
+                         "WHERE idProv = ?; ";
+
+            PreparedStatement stmt;
+            stmt = objConector.conn.prepareStatement(sql);
+            stmt.setInt(1, this.idProv);
+            
+
+            stmt.execute();
+
+            objConector.desconectar();
+
+        } catch (Exception error) {
+            System.out.println("Error en Modelo: " + error);
+        }
         
     }
 
