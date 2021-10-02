@@ -64,6 +64,33 @@ public class ControlProveedor extends HttpServlet {
                 
                 out.println(mensaje);
             }
+            else if(accion.equals("Actualizar")){
+             
+                int idProv = Integer.parseInt(request.getParameter("idProv")); 
+                String nombreProv = request.getParameter("nombreProv");
+                String dirProv = request.getParameter("dirProv");
+                int telProv = Integer.parseInt(request.getParameter("telProv"));
+                String emailProv = request.getParameter("emailProv"); 
+                
+                objProv.setIdProv(idProv);
+                objProv.setNombreProv(nombreProv);
+                objProv.setDirProv(dirProv);
+                objProv.setTelProv(telProv);
+                objProv.setEmailProv(emailProv);
+                               
+                objProv.actualizarProducto();
+                
+                String mensaje = "<html> <body>"+
+                                 " <script type='text/javaScript'> "+
+                                 "      alert('Proveedor actualizado correctamente!'); "+
+                                 "      window.location.href='index.jsp'"+
+                                 "</script> </body> </html>"; 
+                
+                out.println(mensaje);
+            
+            }
+                
+            
         }
         catch(Exception error){
             System.out.println("Error en el Controlador Proveedor: "+ error);
@@ -73,6 +100,31 @@ public class ControlProveedor extends HttpServlet {
      public ArrayList listar(){
         try {
             ResultSet consulta = objProv.listarProveedor(); 
+            ArrayList<Proveedor> listaProveedor = new ArrayList<>(); 
+            
+            while(consulta.next()){
+                objProv = new Proveedor(); 
+                objProv.setIdProv(consulta.getInt(1));
+                objProv.setNombreProv(consulta.getString(2));
+                objProv.setDirProv(consulta.getString(3));
+                objProv.setTelProv(consulta.getInt(4));
+                objProv.setEmailProv(consulta.getString(5));
+                listaProveedor.add(objProv); 
+            }
+            
+            return listaProveedor; 
+            
+        } catch (Exception error) {
+            System.out.println("Error Controlador Proveedor:" + error);
+        }
+ 
+        return null;
+    }
+     
+     public ArrayList consultar (int idProv){
+        try {
+            objProv.setIdProv(idProv);
+            ResultSet consulta = objProv.consultarProducto(); 
             ArrayList<Proveedor> listaProveedor = new ArrayList<>(); 
             
             while(consulta.next()){

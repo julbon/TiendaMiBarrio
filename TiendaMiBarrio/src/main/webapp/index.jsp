@@ -12,13 +12,11 @@
         <title>Inicio</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body>
 
-        <header>
 
-            <div class="logo">
-                <img src=url('assets/imagen/logo.png') alt="">
-            </div>
+    <header>
+
+        <body>
             <nav class="navegacion">
                 <ul class="menu">
                     <li><a href="#">Gestión de Inventarios</a>
@@ -43,6 +41,6 @@
 
                 </ul>
             </nav>
-        </header>
-    </body>
+    </header>
+</body>
 </html>

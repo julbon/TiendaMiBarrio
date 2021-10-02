@@ -89,8 +89,25 @@ public class Proveedor {
         }
     }
     
-    public void consultarProducto(){
+    public ResultSet consultarProducto(){
+        ConexionBD objConector = new ConexionBD(); 
+        objConector.conectar();
         
+        try {
+            
+            String sql = "SELECT * FROM proveedor WHERE idProv = ?; ";
+            PreparedStatement stmt; 
+            stmt = objConector.conn.prepareStatement(sql);
+            stmt.setInt(1, this.idProv);
+            ResultSet consulta = stmt.executeQuery(); 
+            objConector.desconectar();
+            return consulta; 
+            
+        } catch (Exception error) {
+            System.out.println("Error Modelo Proveedor: "+error);
+        }
+ 
+        return null;
     }
     
     public ResultSet listarProveedor(){
@@ -114,7 +131,35 @@ public class Proveedor {
         
     }
     
-    public void actualizarProducto(){
+    public void actualizarProducto() {
+
+        ConexionBD objConector = new ConexionBD();
+        objConector.conectar();
+
+        try {
+
+            String sql = "UPDATE proveedor SET "
+                    + "nombreProv = ?, "
+                    + "dirProv = ?, "
+                    + "telProv = ?, "
+                    + "emailProv = ? "
+                    + "WHERE idProv = ?; ";
+
+            PreparedStatement stmt;
+            stmt = objConector.conn.prepareStatement(sql);
+            stmt.setInt(5, this.idProv);
+            stmt.setString(1, this.nombreProv);
+            stmt.setString(2, this.dirProv);
+            stmt.setInt(3, this.telProv);
+            stmt.setString(4, this.emailProv);
+
+            stmt.execute();
+
+            objConector.desconectar();
+
+        } catch (Exception error) {
+            System.out.println("Error en el Modelo: " + error);
+        }
         
     }
     

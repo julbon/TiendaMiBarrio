@@ -22,13 +22,13 @@
 
         <header>
             <div class="container bg-success text-center bg-opacity-25 margen" >
-                <h1>Gestión de Proveedores</h1>
+                <h1>TIENDA MI BARRIO.COM</h1>
             </div>
         </header>
 
         <section class="container">
             <form method="POST" action="ControlProveedor">
-                <h3 style="text-align: center">Información de General</h3>
+                <h3 style="text-align: center">Creación de Proveedores</h3>
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
